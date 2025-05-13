@@ -1,0 +1,50 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local development settings
+.env
+
+# Django development settings
+*.log
+*.pot
+*.pyc
+# media
+# staticfiles
+
+# Secret keys
+# *.secret_key
+
+# IDE settings
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Mac OS files
+.DS_Store
+
+# Compiled Python bytecode
+*.pyc
+
+# Compiled Python modules
+*.pyo
+
+# Python cache
+__pycache__
+
+# Jupyter Notebook temporary files
+.ipynb_checkpoints/
+
+# Virtual environment
+env/
+venv/
+
+# Ignore all compiled Python bytecode files
+*.pyc
+
+# Ignore all __pycache__ directories
+__pycache__/
+
+# Ignore __pycache__ in migrations
+*/migrations/__pycache__/
