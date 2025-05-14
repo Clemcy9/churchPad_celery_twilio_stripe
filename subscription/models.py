@@ -16,13 +16,21 @@ class Plan(models.Model):
     def __str__(self):
         return self.name + 'plan'
 
+
 class Subscriber(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    plan = models.ForeignKey(Plan, blank=True, null=True, on_delete=models.SET_NULL)
     phone_number = models.CharField(max_length=20)
-    is_active = models.BooleanField(default=True)
-    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.user.username + str(self.plan) + str(self.created_on)
+        return self.user.username 
+
+class Subscription(models.Model):
+    plan = models.OneToOneField(Plan, blank=True, null=True, on_delete=models.SET_NULL)
+    subscriber = models.ForeignKey(Subscriber, on_delete=models.CASCADE, null=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.plan.name +' '+ 'plan' +' for '+ str(self.subscriber) +' '+str(self.created_on.ctime()) 
+
 

@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.utils.translation import gettext as _
 from .models import Subscriber, Plan
 from django.contrib.auth import get_user_model
 
@@ -12,7 +13,7 @@ class SubscriberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Subscriber
-        fields = ['phone_number', 'is_active']
+        fields = ['phone_number', 'is_active','name', 'email', 'plan_id']
 
     def create(self, validated_data):
         # return super().create(validated_data)
@@ -21,7 +22,7 @@ class SubscriberSerializer(serializers.ModelSerializer):
         plan_id = validated_data.pop('plan_id', None)
 
         try:
-            plan = Plan.objects.get(id = plan_id)
+            plan = Plan.objects.get(id = int(plan_id))
             user = User.objects.create(
                 first_name = name.split(' ')[0],
                 email = email,
