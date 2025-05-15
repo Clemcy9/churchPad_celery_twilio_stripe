@@ -5,8 +5,7 @@ from rest_framework import status
 from rest_framework import generics, authentication, permissions
 from .serializers import SubscribeSerializer, SubscriptionSerializer
 from .models import Subscriber, Subscription, Plan
-# Create your views here.
-
+from .tasks import send_welcome_sms
 
 
 class SubcriptionListView(generics.ListAPIView):
@@ -26,11 +25,15 @@ class SubscriptionCreateView(generics.CreateAPIView):
     
     def create(self, request, *args, **kwargs):
         """
-        Override this to customize the full save-response flow.
+        customizing how model is been saved
         """
         response = super().create(request, *args, **kwargs)
-        # Replace response.data if needed:
         response.data = SubscriptionSerializer(self.subscription).data
+        send_welcome_sms.delay(
+            response.data["subscriber"]["user"]["username"], 
+            response.data["subscriber"]["phone_number"]
+        )
+        print(f'sent welcom sms to {response.data["subscriber"]["user"]["username"]}')
         return response
     
 

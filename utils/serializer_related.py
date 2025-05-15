@@ -34,6 +34,17 @@ class SubscribeSerializer(serializers.Serializer):
     phone_number = serializers.CharField()
     plan_id = serializers.IntegerField()
 
+    # def validate(self, attrs):
+    #     not using this because i want to get or create a user, which will fail if already existing with this method
+    #     user_serializer = UserSerializers(data={
+    #         'username':attrs['name'],
+    #         'email':attrs['email'],
+    #         'password':'testpassword'
+    #     })
+    #     user_serializer.is_valid(raise_exception=True)
+    #     attrs['user'] = user_serializer 
+        
+    #     return attrs
     
     @transaction.atomic
     def create(self, validated_data):
@@ -52,6 +63,14 @@ class SubscribeSerializer(serializers.Serializer):
                 'phone_number': validated_data['phone_number']
             }
         )
+
+        # not using this because the validation triggers all other sub-serializers validation which is tedious
+        # subscription_serializer = SubscriptionSerializer(data={
+        #     'plan':PlanSerializer(Plan.objects.get(id = validated_data['plan_id'])).data,
+        #     'subscriber':SubscriberSerializer(subscriber).data,
+        # })
+        # subscription_serializer.is_valid(raise_exception=True)
+        # subscription = subscription_serializer.save()
 
         subscription = Subscription.objects.create(
             plan = Plan.objects.get(id = validated_data['plan_id']),
