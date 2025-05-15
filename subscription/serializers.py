@@ -13,15 +13,20 @@ class PlanSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class SubscriberSerializer(serializers.ModelSerializer):
+    user = UserSerializers()
+    
     class Meta:
         model = Subscriber
-        fields = '__all__'
+        fields = ['phone_number', 'user']
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
+    subscriber = SubscriberSerializer()
+    plan = PlanSerializer()
+    
     class Meta:
         model = Subscription
-        fields = '__all__'
+        fields = ['plan', 'subscriber', 'is_active']
 
 class SubscribeSerializer(serializers.Serializer):
     name = serializers.CharField()
