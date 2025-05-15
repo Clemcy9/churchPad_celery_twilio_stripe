@@ -25,7 +25,7 @@ class Subscriber(models.Model):
         return self.user.username 
 
 class Subscription(models.Model):
-    plan = models.OneToOneField(Plan, blank=True, null=True, on_delete=models.SET_NULL)
+    plan = models.ForeignKey(Plan, blank=True, null=True, on_delete=models.SET_NULL)
     subscriber = models.ForeignKey(Subscriber, on_delete=models.CASCADE, null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
