@@ -18,4 +18,4 @@ def send_welcome_sms(name, phone_number):
     #     to=phone_number
     # )
 
-    print(f'message sent to {name} with no. {phone_number}')
+    return f'message sent to {name} with no. {phone_number}'

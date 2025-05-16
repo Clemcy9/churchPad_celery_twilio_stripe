@@ -48,3 +48,6 @@ __pycache__/
 
 # Ignore __pycache__ in migrations
 */migrations/__pycache__/
+
+#my personal folder
+utils/

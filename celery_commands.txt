@@ -1,0 +1,4 @@
+ 2013  celery -A core worker -l info
+ 2015  celery -A core worker -l info
+ 2017  celery -A core worker -l info
+ 2018  history|grep celery > celery_commands.txt

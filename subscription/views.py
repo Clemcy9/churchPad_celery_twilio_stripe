@@ -33,7 +33,7 @@ class SubscriptionCreateView(generics.CreateAPIView):
             response.data["subscriber"]["user"]["username"], 
             response.data["subscriber"]["phone_number"]
         )
-        print(f'sent welcom sms to {response.data["subscriber"]["user"]["username"]}')
+        # print(f'sent welcom sms to {response.data["subscriber"]["user"]["username"]}')
         return response
     
 
