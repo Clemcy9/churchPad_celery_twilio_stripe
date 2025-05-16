@@ -1,0 +1,29 @@
+ 1121  which pip
+ 1137  pip list
+ 1138  pip install pipreqs
+ 1139  pipreqs . --force
+ 1140  pip install -r requirements.txt 
+ 1141  history | grep pip > useful_pip_command.txt
+ 1144  pipreqs . --force
+ 1145  pip install psycopg2-binary
+ 1146  pip freeze > requirements.txt 
+ 1194  pip3 install wagtail
+ 1198  pip install -r requirements.txt 
+ 1209  lpip list
+ 1238  pip install django-tenants
+ 1239  pip install -r requirements.txt 
+ 1241  pip install -r requirements.txt 
+ 1242  pip freeze > requirements2.txt 
+ 1244  pip install psycopg2-binary
+ 1245  pip freeze > requirements2.txt 
+ 1276  pip install whitenoise
+ 1277  pip freeze > requirements.txt
+ 1408  pip install python-dotenv
+ 1409  pip freeze > requirements.txt 
+ 1482  pip install gunicorn uvicorn
+ 1483  pip install dj-database-url
+ 1484  pip freeze > requirements.txt 
+ 1511  pip install django-pwa
+ 1512  pip install -r requirements.txt 
+ 1783  pip install django
+ 2002  history | grep pip > pip_commands.txt
